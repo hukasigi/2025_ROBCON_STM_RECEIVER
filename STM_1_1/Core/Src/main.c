@@ -21,6 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdio.h>
 
 /* USER CODE END Includes */
 
@@ -68,7 +69,6 @@ static void MX_TIM1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
 uint8_t use_data[8];
 uint32_t id;
 int i = 0;
@@ -124,8 +124,6 @@ int _write(int file, char *ptr, int len)
   return len;
 }
 
-
-
 /* USER CODE END 0 */
 
 /**
@@ -136,8 +134,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
-
+	setbuf(stdout, NULL);
 
   /* USER CODE END 1 */
 
@@ -166,6 +163,7 @@ int main(void)
   MX_TIM16_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
+
 	// CANスタート
 	HAL_CAN_Start(&hcan);
 	// 割り込み有効
@@ -182,44 +180,45 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	  while (1)
-	  {
-	    /* USER CODE END WHILE */
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
-		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 500);
+  while (1)
+  {
+    /* USER CODE END WHILE */
 
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
-		  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 500);
+    /* USER CODE BEGIN 3 */
 
-		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 1);
-		  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 500);
+	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
+	 		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 500);
 
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1);
-		  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 500);
+	 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
+	 		  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 500);
+
+	 		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 1);
+	 		  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 500);
+
+	 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1);
+	 		  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 500);
 
 
-		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
-		  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 500);
+	 		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
+	 		  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 500);
 
 
-		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 1);
-		  __HAL_TIM_SET_COMPARE(&htim16, TIM_CHANNEL_1, 1000 - 500);
+	 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, 1);
+	 		  __HAL_TIM_SET_COMPARE(&htim16, TIM_CHANNEL_1, 1000 - 500);
 
-		  CAN_TX(0x001);
-	      printf("Receiver\r\n");
-	      printf("%d\r\n", use_data[0]);
-	      printf("%d\r\n", use_data[1]);
-	      printf("%d\r\n", use_data[2]);
-	      printf("%d\r\n", use_data[3]);
-	      printf("%d\r\n", use_data[4]);
-	      printf("%d\r\n", use_data[5]);
-	      printf("%d\r\n", use_data[6]);
-	      printf("%d\r\n", use_data[7]);
-	      HAL_Delay(100);
-
-	    /* USER CODE BEGIN 3 */
-	  }
-	  /* USER CODE END 3 */
+	  CAN_TX(0x001);
+      printf("Receiver\r\n");
+      printf("%d\r\n", use_data[0]);
+      printf("%d\r\n", use_data[1]);
+      printf("%d\r\n", use_data[2]);
+      printf("%d\r\n", use_data[3]);
+      printf("%d\r\n", use_data[4]);
+      printf("%d\r\n", use_data[5]);
+      printf("%d\r\n", use_data[6]);
+      printf("%d\r\n", use_data[7]);
+      HAL_Delay(100);
+  }
+  /* USER CODE END 3 */
 }
 
 /**
@@ -313,6 +312,7 @@ static void MX_CAN_Init(void)
   filter.FilterActivation     = ENABLE;
 
   HAL_CAN_ConfigFilter(&hcan, &filter);
+
 
   /* USER CODE END CAN_Init 2 */
 
@@ -418,7 +418,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 64;
+  htim2.Init.Prescaler = 63;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 1000;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -477,7 +477,7 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 64;
+  htim3.Init.Prescaler = 63;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim3.Init.Period = 1000;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -607,7 +607,7 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 38400;
+  huart2.Init.BaudRate = 115200;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;
@@ -644,20 +644,20 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3|GPIO_PIN_5|GPIO_PIN_7, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5|GPIO_PIN_7, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1|GPIO_PIN_5, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1|GPIO_PIN_3|GPIO_PIN_5, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PA3 PA5 PA7 */
-  GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_5|GPIO_PIN_7;
+  /*Configure GPIO pins : PA5 PA7 */
+  GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_7;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB1 PB5 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_5;
+  /*Configure GPIO pins : PB1 PB3 PB5 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_3|GPIO_PIN_5;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

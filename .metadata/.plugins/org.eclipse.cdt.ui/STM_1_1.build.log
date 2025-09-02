@@ -1,29 +1,17 @@
-14:27:15 **** Incremental Build of configuration Debug for project STM_1_1 ****
+14:21:13 **** Build of configuration Debug for project STM_1_1 ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:209:15: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
-  209 |               printf("Receiver\r\n");
-      |               ^~~~~~
-../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
-   20 | #include "main.h"
-  +++ |+#include <stdio.h>
-   21 | 
-../Core/Src/main.c:209:15: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
-  209 |               printf("Receiver\r\n");
-      |               ^~~~~~
-../Core/Src/main.c:209:15: note: include '<stdio.h>' or provide a declaration of 'printf'
 arm-none-eabi-gcc -o "STM_1_1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\hukas\OneDrive\ドキュメント\CubeIDE_ROBOKON_2025\STM_1_1\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM_1_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: STM_1_1.elf
  
 arm-none-eabi-size  STM_1_1.elf 
 arm-none-eabi-objdump -h -S STM_1_1.elf  > "STM_1_1.list"
    text	   data	    bss	    dec	    hex	filename
-  26128	    104	   2400	  28632	   6fd8	STM_1_1.elf
+  26536	    104	   2400	  29040	   7170	STM_1_1.elf
 Finished building: default.size.stdout
  
 Finished building: STM_1_1.list
  
 
-14:27:17 Build Finished. 0 errors, 2 warnings. (took 2s.57ms)
+14:21:16 Build Finished. 0 errors, 0 warnings. (took 2s.765ms)
 
