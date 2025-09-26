@@ -1,0 +1,10 @@
+13:01:43 **** Incremental Build of configuration Debug for project Servo_motor ****
+make -j16 all 
+arm-none-eabi-size  Servo_motor.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15264	     12	   1860	  17136	   42f0	Servo_motor.elf
+Finished building: default.size.stdout
+ 
+
+13:01:44 Build Finished. 0 errors, 0 warnings. (took 736ms)
+

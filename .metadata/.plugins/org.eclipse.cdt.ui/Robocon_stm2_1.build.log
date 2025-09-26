@@ -1,0 +1,10 @@
+18:03:05 **** Build of configuration Debug for project Robocon_stm2_1 ****
+make -j16 all 
+arm-none-eabi-size  Robocon_stm2_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25584	    108	   2476	  28168	   6e08	Robocon_stm2_1.elf
+Finished building: default.size.stdout
+ 
+
+18:03:07 Build Finished. 0 errors, 0 warnings. (took 1s.528ms)
+

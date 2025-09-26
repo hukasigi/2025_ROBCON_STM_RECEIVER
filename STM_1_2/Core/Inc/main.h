@@ -85,10 +85,6 @@ void Error_Handler(void);
 #define DIR3_GPIO_Port GPIOB
 #define PWM5_T3_C1_Pin GPIO_PIN_4
 #define PWM5_T3_C1_GPIO_Port GPIOB
-#define DIR5_Pin GPIO_PIN_5
-#define DIR5_GPIO_Port GPIOB
-#define PWM6_T16_1N_Pin GPIO_PIN_6
-#define PWM6_T16_1N_GPIO_Port GPIOB
 #define DIR6_Pin GPIO_PIN_7
 #define DIR6_GPIO_Port GPIOB
 

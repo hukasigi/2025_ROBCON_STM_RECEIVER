@@ -3,6 +3,20 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
-		<item value="usart"/>
+		<item value="&amp;htim3, TIM_CHANNEL_2"/>
+		<item value="\r"/>
+		<item value="\r\n"/>
+		<item value="kamaki"/>
+		<item value="pomp"/>
+		<item value="now"/>
+		<item value="before"/>
+		<item value="HAL_D"/>
+		<item value="GPIO_W"/>
+		<item value="DIR7_"/>
+		<item value="USER"/>
+		<item value="DIR5"/>
+		<item value="DIR3"/>
+		<item value="testData"/>
+		<item value="CAN"/>
 	</list>
 </section>

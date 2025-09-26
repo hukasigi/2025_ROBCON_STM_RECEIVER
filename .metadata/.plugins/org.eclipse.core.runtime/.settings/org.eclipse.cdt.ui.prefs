@@ -1,4 +1,10 @@
+content_assist_autoactivation_delay=100
+content_assist_autoinsert=false
+content_assist_prefix_completion=false
+content_assist_proposals_timeout=5000
 eclipse.preferences.version=1
+sourceHoverBackgroundColor=255,255,225
 spelling_locale_initialized=true
+spelling_user_dictionary_encoding=
 useAnnotationsPrefPage=true
 useQuickDiffPrefPage=true
